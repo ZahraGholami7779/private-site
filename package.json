@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "animejs": "^3.2.2",
+    "bootstrap": "^5.3.3",
     "imagesloaded": "^5.0.0",
     "jquery": "^3.7.1",
     "next": "13.5.8",

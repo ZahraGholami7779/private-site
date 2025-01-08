@@ -229,8 +229,8 @@ export default function Sidebar() {
     }, []);
 
     return (
-        <aside className={`col-12 col-md-12 col-xl-3 sticky`}>
-            <div className={`sidebar box shadow pb-0 sticky-column`}>
+        <aside className="col-12 col-md-12 col-xl-3" >
+            <div className="sidebar box shadow pb-0 sticky-column">
                 <div className="avatar avatar--180">
                     <Image
                         src="/assets/img/z2.png"
@@ -271,7 +271,7 @@ export default function Sidebar() {
                         </li>
                     </ul>
 
-                    <a className="btn btn--blue-gradient sentence" href="/contact"><i className="font-icon"></i>ارتباط  با من</a>
+                    <a className="btn btn--blue-gradient sentence" href="/contact">ارتباط  با من</a>
                 </div>
             </div>
         </aside>
