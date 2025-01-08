@@ -39,7 +39,6 @@
 import Navbar from "@/components/modules/navbar/Navbar";
 import Sidebar from "@/components/modules/sidebar/Sidebar";
 import About from "@/components/templates/about/About";
-import BackToTop from "@/components/templates/BackToTop/BackToTop";
 import Comments from "@/components/templates/comments/Comments";
 import Preloader from "@/components/templates/preloader/Preloader";
 import Skill from "@/components/templates/skill/Skill";
@@ -69,7 +68,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <BackToTop />
       <div className="overlay-slideNav"></div>
     </>
   );

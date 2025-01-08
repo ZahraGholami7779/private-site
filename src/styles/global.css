@@ -756,15 +756,15 @@ select option,
 
 .btn {
   background-color: #304CFD;
-  border-radius: 20px;
+  border-radius: 20px !important;
   border: 0;
   box-shadow: 0 0.5rem 1rem rgba(48, 76, 253, 0.15), 0 0.125rem 0.25rem rgba(48, 76, 253, 0.15);
-  color: #fff;
+  color: #fff !important;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
   line-height: inherit;
-  padding: 0.9375rem 2rem 0.875rem;
+  padding: 0.9375rem 2rem 0.875rem !important;
   position: relative;
   transition: .4s ease-in-out;
   white-space: nowrap;

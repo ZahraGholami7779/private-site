@@ -42,9 +42,7 @@ export default function PostComment() {
                 rows="1"
             ></textarea>
             <button type="submit" className="btn">
-                <i className="font-icon">
-                    <BsSendPlusFill className='instagram-icon' />
-                </i>
+                <BsSendPlusFill className='instagram-icon font-icon' />
             </button>
             <div className="dropdown dropup">
                 <i className="font-icon" id="dropdownEmoji" data-toggle="dropdown" aria-haspopup="true">
