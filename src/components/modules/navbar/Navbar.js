@@ -1,8 +1,8 @@
-// 
+
 
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
-import anime from 'animejs/lib/anime.es.js';
+import anime from 'animejs'
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 

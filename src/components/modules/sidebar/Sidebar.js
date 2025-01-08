@@ -72,9 +72,76 @@ import anime from 'animejs';
 import { RiInstagramFill } from 'react-icons/ri';
 import { IoLogoLinkedin } from 'react-icons/io';
 import { AiOutlineGithub } from 'react-icons/ai';
-import $ from 'jquery'; // Import jQuery
 
 export default function Sidebar() {
+    // useEffect(() => {
+    //     const stickyColumns = document.querySelectorAll('.sticky-column');
+    //     const parent = document.querySelector('.sticky-parent');
+    //     const screenThreshold = 1200;
+
+    //     const handleScroll = () => {
+    //         const parentRect = parent.getBoundingClientRect();
+    //         stickyColumns.forEach(column => {
+    //             const columnRect = column.getBoundingClientRect();
+                
+    //             if (window.innerWidth >= screenThreshold) {
+    //                 if (columnRect.top < 0 && columnRect.bottom > 0) {
+    //                     column.style.position = 'fixed';
+    //                     column.style.top = '0';
+    //                     animateColumn(column, columnRect.top);
+    //                 } else if (columnRect.bottom > parentRect.bottom) {
+    //                     column.style.position = 'absolute';
+    //                     column.style.bottom = '0';
+    //                     animateColumn(column, columnRect.bottom);
+    //                 } else {
+    //                     column.style.position = 'relative';
+    //                     column.style.top = 'auto';
+    //                     animateColumn(column, 0); // Reset position
+    //                 }
+    //             } else {
+    //                 column.style.position = 'relative';
+    //                 column.style.top = 'auto';
+    //                 animateColumn(column, 0); // Reset position
+    //             }
+    //         });
+    //     };
+
+    //     const handleResize = () => {
+    //         if (window.innerWidth < screenThreshold) {
+    //             stickyColumns.forEach(column => {
+    //                 column.style.position = 'relative';
+    //                 column.style.top = 'auto';
+    //                 animateColumn(column, 0); // Reset position
+    //             });
+    //         } else {
+    //             handleScroll(); // Run scroll logic on resize
+    //         }
+    //     };
+
+    //     const animateColumn = (element, scrollPosition) => {
+    //         anime({
+    //             targets: element,
+    //             translateY: [scrollPosition * -.5, 0], // Adjust the factor for speed
+    //             opacity: [1],
+    //             duration: 200,
+    //             easing: 'easeInOutQuad',
+    //         });
+    //     };
+
+    //     // Initial call
+    //     handleScroll();
+
+    //     // Attach event listeners
+    //     window.addEventListener('scroll', handleScroll);
+    //     window.addEventListener('resize', handleResize);
+
+    //     // Cleanup function
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //         window.removeEventListener('resize', handleResize);
+    //     };
+    // }, []);
+
     useEffect(() => {
         const stickyColumns = document.querySelectorAll('.sticky-column');
         const parent = document.querySelector('.sticky-parent');
@@ -84,23 +151,26 @@ export default function Sidebar() {
             const parentRect = parent.getBoundingClientRect();
             stickyColumns.forEach(column => {
                 const columnRect = column.getBoundingClientRect();
-                
+
                 if (window.innerWidth >= screenThreshold) {
                     if (columnRect.top < 0 && columnRect.bottom > 0) {
-                        column.style.position = 'fixed';
-                        column.style.top = '0';
+                        column.classList.add('fixed');
+                        column.classList.remove('absolute', 'relative');
                         animateColumn(column, columnRect.top);
                     } else if (columnRect.bottom > parentRect.bottom) {
-                        column.style.position = 'absolute';
+                        column.classList.add('absolute');
+                        column.classList.remove('fixed', 'relative');
                         column.style.bottom = '0';
-                        animateColumn(column, columnRect.bottom);
+                        animateColumn(column, columnRect.bottom - parentRect.bottom);
                     } else {
-                        column.style.position = 'relative';
+                        column.classList.add('relative');
+                        column.classList.remove('fixed', 'absolute');
                         column.style.top = 'auto';
                         animateColumn(column, 0); // Reset position
                     }
                 } else {
-                    column.style.position = 'relative';
+                    column.classList.add('relative');
+                    column.classList.remove('fixed', 'absolute');
                     column.style.top = 'auto';
                     animateColumn(column, 0); // Reset position
                 }
@@ -110,7 +180,8 @@ export default function Sidebar() {
         const handleResize = () => {
             if (window.innerWidth < screenThreshold) {
                 stickyColumns.forEach(column => {
-                    column.style.position = 'relative';
+                    column.classList.add('relative');
+                    column.classList.remove('fixed', 'absolute');
                     column.style.top = 'auto';
                     animateColumn(column, 0); // Reset position
                 });
@@ -122,15 +193,29 @@ export default function Sidebar() {
         const animateColumn = (element, scrollPosition) => {
             anime({
                 targets: element,
-                translateY: [scrollPosition * -0.8, 0], // Adjust the factor for speed
+                translateY: [scrollPosition * -0.5, 0], // Adjust the factor for speed
+                opacity: [1], // Ensure opacity is set to 1
+                duration: 200,
+                easing: 'easeInOutQuad',
+            });
+        };
+
+        const fadeIn = (element) => {
+            anime({
+                targets: element,
                 opacity: [1],
-                duration: 400,
+                duration: 200,
                 easing: 'easeInOutQuad',
             });
         };
 
         // Initial call
         handleScroll();
+        
+        // Fade in all sticky columns on mount
+        stickyColumns.forEach(column => {
+            fadeIn(column);
+        });
 
         // Attach event listeners
         window.addEventListener('scroll', handleScroll);
@@ -144,7 +229,7 @@ export default function Sidebar() {
     }, []);
 
     return (
-        <aside className={`col-12 col-md-12 col-xl-3 sticky-parent`}>
+        <aside className={`col-12 col-md-12 col-xl-3 sticky`}>
             <div className={`sidebar box shadow pb-0 sticky-column`}>
                 <div className="avatar avatar--180">
                     <Image

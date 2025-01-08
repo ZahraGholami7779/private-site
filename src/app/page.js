@@ -43,7 +43,8 @@ import BackToTop from "@/components/templates/BackToTop/BackToTop";
 import Comments from "@/components/templates/comments/Comments";
 import Preloader from "@/components/templates/preloader/Preloader";
 import Skill from "@/components/templates/skill/Skill";
-import UserDevice from "@/components/templates/useDevice/userDevice";
+import UserDevice from "@/components/templates/useDevice/UserDevice";
+
 
 export default function Home() {
  

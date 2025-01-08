@@ -3055,3 +3055,25 @@ html, body {
   left: initial;
   right: 1.0625rem;
 }
+
+
+
+.sticky-column {
+  transition: all 0.2s ease; /* Smooth transition for position changes */
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  /* Additional styles for fixed position if needed */
+}
+
+.absolute {
+  position: absolute;
+  /* Additional styles for absolute position if needed */
+}
+
+.relative {
+  position: relative;
+  /* Additional styles for relative position if needed */
+}

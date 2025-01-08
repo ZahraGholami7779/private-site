@@ -2,12 +2,10 @@
 import "../../public/assets/styles/vendors/bootstrap.min.css";
 import "../../public/assets/styles/vendors/swiper.min.css";
 import "../../public/assets/styles/vendors/simplebar.min.css";
-import "../../public/assets/styles/mapbox-gl.css";
-import "../../public/assets/demo/style-demo.css"
 import "../styles/global.css";
 import Head from "next/head";
 import Script from "next/script";
-import UserDevice from "@/components/templates/useDevice/userDevice";
+import UserDevice from "@/components/templates/useDevice/UserDevice";
 
 export const metadata = {
   title: "زهرا غلامی | توسعه دهنده وب",
@@ -35,10 +33,6 @@ export default function RootLayout({ children }) {
         <UserDevice></UserDevice>
         {children}
         <Script src="/assets/js/jquery-3.4.1.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/plugins.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/common.js" strategy="lazyOnload" />
-        <Script src="/assets/js/mapbox-gl.js" strategy="lazyOnload" />
-        <Script src="/assets/demo/plugins-demo.js"  strategy="lazyOnload" />
       </body>
     </html>
   );
