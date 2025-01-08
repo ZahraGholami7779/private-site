@@ -1,4 +1,6 @@
-"use client"
+// 
+
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import anime from 'animejs/lib/anime.es.js';
 import { useRouter } from 'next/navigation';
@@ -7,11 +9,20 @@ import Link from 'next/link';
 export default function Navbar() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [activeTab, setActiveTab] = useState('/about'); // Default active tab
   const sideNavRef = useRef(null);
   const sideNavOpenRef = useRef(null);
 
   const openMenuHandler = () => {
     setIsMenuOpen(prev => !prev);
+  };
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    if (window.innerWidth < 580) {
+      // Close mobile menu on tab click
+        setIsMenuOpen(false);
+    }
   };
 
   useEffect(() => {
@@ -36,14 +47,13 @@ export default function Navbar() {
           easing: 'easeInOutBack'
         }, '-=500');
 
-      if (isMenuOpen) {
+      if (isMenuOpen===true) {
         sideNavTl.play();
       } else {
         sideNavTl.reverse();
       }
     }
 
-    // Cleanup function to remove class on unmount
     return () => {
       document.body.classList.remove('open-menu');
     };
@@ -52,33 +62,35 @@ export default function Navbar() {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('open-menu');
+      return
     } else {
       document.body.classList.remove('open-menu');
+      return
     }
   }, [isMenuOpen]);
 
   return (
     <>
       <div className="circle-menu">
-        <div className={`hamburger ${isMenuOpen ? "is-active" : ""}`} ref={sideNavOpenRef} onClick={openMenuHandler}>
+        <div className={`hamburger ${isMenuOpen===true ? "is-active" : ""}`} ref={sideNavOpenRef} onClick={openMenuHandler}>
           <div className="line"></div>
           <div className="line"></div>
           <div className="line"></div>
         </div>
       </div>
-      <div className={`inner-menu js-menu sentence ${isMenuOpen ? "is-active" : ""}`} ref={sideNavRef}>
+      <div className={`inner-menu js-menu sentence ${isMenuOpen===true ? "is-active" : ""}`} ref={sideNavRef}>
         <ul className="nav">
           <li className="nav__item">
-            <Link href="/about" className={router.pathname === "/about" ? "active" : ""}>درباره من</Link>
+            <Link  href="/about" className={activeTab === '/about' ? "active" : ""} onClick={() => handleTabClick('about')}>درباره من</Link>
           </li>
           <li className="nav__item">
-            <Link href="/resume" className={router.pathname === "/resume" ? "active" : ""}>رزومه من</Link>
+            <Link href="/resume" className={activeTab === '/resume' ? "active" : ""} onClick={() => handleTabClick('resume')}>رزومه من</Link>
           </li>
           <li className="nav__item">
-            <Link href="/portfolio" className={router.pathname === "/portfolio" ? 'active' : ""}>نمونه کار ها</Link>
+            <Link href="/portfolio" className={activeTab === '/portfolio' ? 'active' : ""} onClick={() => handleTabClick('portfolio')}>نمونه کار ها</Link>
           </li>
-          <li className="nav__item">
-            <Link href="/contact" className={router.pathname === "/contact" ? "active" : ""}>تماس با من</Link>
+          <li className={`nav__item`}>
+            <Link href="/contact" className={activeTab === '/contact' ? "active" : ""} onClick={() => handleTabClick('contact')}>تماس با من</Link>
           </li>
         </ul>
       </div>

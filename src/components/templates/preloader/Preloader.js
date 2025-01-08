@@ -5,6 +5,24 @@ import imagesLoaded from 'imagesloaded';
 
 const Preloader = () => {
     useEffect(() => {
+
+        function progressBar() {
+            $('.progress').each(function() {
+                var ctrl = new ScrollMagic.Controller();
+                new ScrollMagic.Scene({
+                    triggerElement: '.progress',
+                    triggerHook: 'onEnter',
+                    duration: 300
+                })
+                .addTo(ctrl)
+                .on("enter", function (e) {
+                    var progressBar = $('.progress-bar');
+                    progressBar.each(function(indx){
+                        $(this).css({'width': $(this).attr('aria-valuenow') + '%', 'z-index': '2'});
+                    });
+                });
+            });
+        }
         // Animation when the component mounts
         anime({
             targets: 'body',
