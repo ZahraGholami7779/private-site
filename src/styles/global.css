@@ -769,6 +769,16 @@ select option,
   transition: .4s ease-in-out;
   white-space: nowrap;
 }
+
+.send-icon-comment{
+  color: #fff !important;
+  cursor: pointer;
+  font-weight: 400;
+  position: absolute;
+  top:12px !important ;
+  left: 22px !important ;
+
+}
 .btn:hover {
   color: #fff;
   box-shadow: none;
@@ -1679,6 +1689,7 @@ button:focus {
   .contact-form .btn {
     width: 100%;
   }
+
 }
 .tabcontent .contact-form {
   padding-bottom: 1.875rem;
@@ -1686,6 +1697,14 @@ button:focus {
 @media only screen and (max-width: 580px) {
   .tabcontent .contact-form {
     padding-bottom: 1.25rem;
+  }
+  .comment-form .send-icon-comment{
+    color: #fff !important;
+    cursor: pointer;
+    font-weight: 400;
+    position: absolute;
+    top:8px !important;
+    left: 22px !important;
   }
 }
 

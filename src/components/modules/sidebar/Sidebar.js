@@ -205,7 +205,7 @@ export default function Sidebar() {
                 targets: element,
                 opacity: [1],
                 duration: 200,
-                easing: 'easeInOutQuad',
+                easing: 'easeInOutBack',
             });
         };
 
