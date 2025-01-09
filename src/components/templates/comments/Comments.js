@@ -177,6 +177,10 @@ export default function CustomerReviews() {
       >
         {[
           {
+            name: "بایت مسترز",
+            caption: "به امید درخشیدن در این فضای دیجیتال",
+          },
+          {
             name: "رامین",
             caption: "دیدن سایتت باعث خوشحالیمونه حتما همراهت خواهیم بود",
           },
@@ -188,10 +192,7 @@ export default function CustomerReviews() {
             name: "مریم",
             caption: "به امید موفقیت های بیشترت عزیزم :)",
           },
-          {
-            name: "بایت مسترز",
-            caption: "به امید درخشیدن در این فضای دیجیتال",
-          },
+      
         ].map((review, index) => (
           <SwiperSlide className="review-item" key={index}>
             <div className="avatar avatar--80">
