@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no" />
         <meta name="author" content="زهرا غلامی" />
         <meta name="description" content="ارائه خدمات طراحی و برنامه نویسی سایت،آموزش برنامه نویسی "/>
-        <meta name="keywords" content="سایت زهرا غلامی،زهرا غلامی،برنامه نویس وب،زهرا غلامی برنامه نویس وب" />
+        <meta name="keywords" content="سایت زهرا غلامی،زهرا غلامی،برنامه نویس وب،زهرا غلامی برنامه نویس وب،زهرا غلامی شیراز" />
 
 
         <meta property="og:title" content="زهرا غلامی | توسعه دهنده وب" />
